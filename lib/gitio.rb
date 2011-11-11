@@ -10,7 +10,7 @@ module GitIO
     post_params = { url: url }
     post_params[:code] = options[:name] unless options[:name].nil?
     
-    response = Net::HTTP.post_form(URI.parse(SERVICE_URL), post_parms)
+    response = Net::HTTP.post_form(URI.parse(SERVICE_URL), post_params)
     
     case response
     when Net::HTTPCreated then
