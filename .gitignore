@@ -1,0 +1,11 @@
+# Xcode Files
+*.xcodeproj/*
+!project.pbxproj
+
+# Mac OS System Files
+.DS_Store
+*.tmp
+Icon?
+
+# Rubygems
+pkg/
