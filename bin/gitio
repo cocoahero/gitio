@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'thor'
+require 'gitio'
+
+class GitIO < Thor
+  desc "shrink URL", "Shrinks a given URL using github's URL shortener, git.io"
+  method_options :name, :aliases => "-d", :desc => "Use a vanity name for short link", :type => :string
+  def shrink(url)
+    vanity_name = options[:name]
+    short_link = ""
+    if vanity_name
+      short_link = GitIO.shrink(url, :name => vanity_name)
+    else
+      short_link = GitIO.shrink(url)
+    end
+    
+    if short_link
+      puts short_link
+    else
+      puts "An error occured!"
+    end
+  end
+end
+
+GitIO.start
