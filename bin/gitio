@@ -5,7 +5,7 @@ require 'net/http'
 
 class GitIO < Thor
   desc "shrink URL", "Shrinks a given URL using github's URL shortener, git.io"
-  method_option :name, :aliases => "-d", :desc => "Use a vanity name for the short link", :type => :string
+  method_option :name, :aliases => "-n", :desc => "Use a vanity name for the short link", :type => :string
   def shrink(url)
     vanity_name = options[:name]
     response = Net::HTTP.post_form(URI.parse("http://git.io/"), {:url => url, :code => vanity_name})
